@@ -1,16 +1,16 @@
 const express=require('express')
-
+const config=require('../config')
 const app=express()
 const apiRouter=require('../routes/api');
 var server = require('http').Server(app);
 
 exports.start=()=>{
-    server.listen(3000,(err)=>{
+    server.listen(config.port,(err)=>{
         if (err){
             console.log(err);
             process.exit(-1)
         }
-        console.log("server started");
+        console.log(`Server started at ${config.port}`);
     })
 }
 app.use(express.json());
